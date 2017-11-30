@@ -9,5 +9,8 @@ class HomePage(TemplateView):
 def index(request):
     return render(request, 'LetsHang/index.html', {
     'title': 'Welcome to the Home Page Boi'
-
 })
+
+
+def login_redirect(request):
+    return redirect('/accounts/login')
