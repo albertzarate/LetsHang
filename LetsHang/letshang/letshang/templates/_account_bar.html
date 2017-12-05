@@ -1,6 +1,8 @@
 {% load i18n %}
 {% load account_tags %}
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <ul class="navbar-nav">
     {% if request.user.is_authenticated %}
@@ -14,7 +16,7 @@
             <a class="nav-link" id="account_logout" href="{% url 'account_logout' %}"><i class="fa fa-power-off"></i> {% trans "Log out" %}</a>
         </li>
 
-      
+
 
     {% else %}
         <li class="nav-item"><a class="nav-link" href="{% url 'account_login' %}">{% trans "Log in" %}</a></li>

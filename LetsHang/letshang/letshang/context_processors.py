@@ -19,3 +19,22 @@ def settings(request):
         })
 
     return ctx
+'''
+def l1(request):
+    l1=[]
+    return{
+        'l1':l1,
+    }
+
+def l2(request):
+    l2=[]
+    return{
+        'l2':l2,
+    }
+
+def l3(request):
+    l3=[]
+    return{
+        'l3':l3,
+    }
+'''

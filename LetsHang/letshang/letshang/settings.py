@@ -100,7 +100,9 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "account.context_processors.account",
                 "letshang.context_processors.settings",
-                #"selection",
+                #"letshang.context_processors.l1",
+                #"letshang.context_processors.l2",
+                #"letshang.context_processors.l3",
             ],
         },
     },
@@ -130,6 +132,7 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "django.contrib.staticfiles",
     "selection",
+    "pinax.notifications",
     # templates
     "bootstrapform",
     "pinax.templates",

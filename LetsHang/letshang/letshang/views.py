@@ -11,6 +11,7 @@ def update_profile(self, form):
     UserProfile.objects.create(
         user=self.created_user,
         birthdate=form.cleaned_data('birthdate'),
+        #most_recent_choice=form.IntegerField()
     )
 
     def after_signup(self, form):

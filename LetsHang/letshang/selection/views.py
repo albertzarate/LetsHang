@@ -2,39 +2,56 @@
 from __future__ import unicode_literals
 from django.http import HttpResponse
 from django.shortcuts import render
+from letshang.models import UserProfile
+from django.http import Http404
+from letshang import apps
+from django.contrib.auth.models import User
+from django.apps import AppConfig
+from django.conf import settings
 
 # Create your views here.
 def index(request):
-    return HttpResponse("""
+    return render(request, 'selection/index.html', {})
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Selection</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
+def choice(request, selection_id):
+    profiles=UserProfile.objects.all();
+    for profile in profiles:
+        choice=""
+        name=profile.user.username
+        if str(selection_id)=='1':
+            choice="eat!"
+            choice_id=1
+            profile.most_recent_choice=1
+            profile.activity_count=profile.activity_count+1
+            profile.save()
+        elif str(selection_id)=='2':
+            choice="study!"
+            choice_id=2
+            profile.most_recent_choice=2
+            profile.activity_count=profile.activity_count+1
+            profile.save()
+        elif str(selection_id)=='3':
+            choice="workout!"
+            choice_id=3
+            profile.most_recent_choice=3
+            profile.activity_count=profile.activity_count+1
+            profile.save()
+        else:
+            raise Http404("Selection does not exist")
 
-<div class="container">
-  <h2 class="center-align" >Make a selection</h2>
-  <a href="#" class="btn btn-info" role="button">I want to eat!</a>
-  <a href="#" class="btn btn-info" role="button">I want to study!</a>
-  <a href="#" class="btn btn-info" role="button">I want to work-out!</a>
-</div>
+        return render(request, 'selection/choice.html', {'choice':choice, 'choice_id':choice_id , 'name':name,})
 
-</body>
-</html>
+def match(request, selection_id):
+    profiles=UserProfile.objects.all()
+    for profile in profiles:
+        location=""
+        if str(selection_id)=='1':
+            location="at the microwave next to the restrooms in the SJSU Student Union"
+        elif str(selection_id)=='2':
+            location="in front of the MLK Library"
+        elif str(selection_id)=='3':
+            location="in front of the SJSU Sport Club near the Event Center"
+        else:
+            raise Http404("Match Error")
 
-
-
-
-
-
-
-
-
-""")
+    return render(request, 'selection/match.html', {'location':location})

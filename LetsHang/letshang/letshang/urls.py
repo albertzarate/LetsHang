@@ -13,5 +13,6 @@ urlpatterns = [
     url(r'^account/signup/$', SignupView.as_view(), name="account_signup"),
     url(r"^account/", include("account.urls")),
     url(r"^selection/", include("selection.urls")),
+    url(r"^notifications/", include("pinax.notifications.urls", namespace="pinax_notifications")),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
