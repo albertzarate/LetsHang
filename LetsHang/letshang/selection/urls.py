@@ -7,5 +7,5 @@ urlpatterns = [
 
     #/selection/1/ (2 or 3)
     url(r'^(?P<selection_id>[0-9]+)/$', views.choice, name='choice'),
-    url(r'^(?P<selection_id>[0-9]+)/match/$', views.match, name='match'),
+    url(r'^(?P<selection_id>[0-9]+)/match/$', views.choice, name='choice'),
 ]

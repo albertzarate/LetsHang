@@ -4,7 +4,7 @@ from django.conf.urls.static import static
 from django.views.generic import TemplateView
 
 from django.contrib import admin
-
+from . import views
 from . views import SignupView
 
 urlpatterns = [
@@ -14,5 +14,6 @@ urlpatterns = [
     url(r"^account/", include("account.urls")),
     url(r"^selection/", include("selection.urls")),
     url(r"^notifications/", include("pinax.notifications.urls", namespace="pinax_notifications")),
+    url(r"^profile/$", views.profile, name="profile"),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

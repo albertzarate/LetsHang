@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<section class="jumbotron">
+<body>
+<form action="{% url "profile" %}" method="post"
+  enctype="multipart/form-data">
+  {% csrf_token %}
+  <h2>Profile</h2>
+  {{ form.as_p }}
+  <p>
+    <button type="submit">
+      Save
+    </button>
+    <a href="/" class="btn btn-info" role="button">Go back home</a>
+  </p>
+</form>
+</body>
+</section>
+</html>

@@ -100,9 +100,6 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "account.context_processors.account",
                 "letshang.context_processors.settings",
-                #"letshang.context_processors.l1",
-                #"letshang.context_processors.l2",
-                #"letshang.context_processors.l3",
             ],
         },
     },
@@ -131,19 +128,19 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.sites",
     "django.contrib.staticfiles",
-    "selection",
-    "pinax.notifications",
     # templates
     "bootstrapform",
     "pinax.templates",
-
+    "pinax.notifications",
     # external
     "account",
     "pinax.eventlog",
     "pinax.webanalytics",
+    #"alert",
 
     # project
     "letshang",
+    "selection",
 ]
 
 ADMIN_URL = "admin:index"
@@ -195,3 +192,6 @@ ACCOUNT_USE_AUTH_AUTHENTICATE = True
 AUTHENTICATION_BACKENDS = [
     "account.auth_backends.UsernameAuthenticationBackend",
 ]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

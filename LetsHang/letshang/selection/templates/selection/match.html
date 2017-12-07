@@ -11,7 +11,11 @@
   <body>
   <section class="jumbotron">
   <div class="container">
-    <h1 class="center-align" >You have matched with Albert!<br><br>Please meet {{location}}.</h1>
+    <h1 class="center-align" >You have matched with {{other_user.user.username}}!<br><br>Please meet {{location}}.</h1>
+    <p>
+      <img src="{{ other_user.photo.url }}">
+    </p>
+    <a href="/" class="btn btn-info" role="button">Go back home</a>
   </div>
   </section>
   </body>
