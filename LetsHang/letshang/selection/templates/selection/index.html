@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+{% extends "site_base.html" %}
+{% load i18n %}
+
+{% block head_title %}LetsHang{% endblock %}
+
+{% block body_class %}home{% endblock %}
+
+{% block body_base %}
 <html lang="en">
 <head>
   <title>Selection</title>
@@ -12,15 +19,6 @@
 <section class="jumbotron">
 <div class="container">
   <h1 class="center-align" >Make a selection</h1>
-    <!--
-  <form action="/makeselection/" method="post">
-    {% csrf_token %}
-    <input type="button" name="selection1" value="1">
-    <input type="button" name="selection2" value="2">
-    <input type="button" name="selection3" value="3">
-  </form>
-  <input type="submit" name="" value="selection">
--->
   <a href="/selection/1/" class="btn btn-info" role="button">I want to eat!</a>
   <a href="/selection/2/" class="btn btn-info" role="button">I want to study!</a>
   <a href="/selection/3/" class="btn btn-info" role="button">I want to work-out!</a>
@@ -29,3 +27,4 @@
 </section>
 </body>
 </html>
+{% endblock %}

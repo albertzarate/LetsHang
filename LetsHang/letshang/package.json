@@ -1,7 +1,7 @@
 {
   "repository": {
     "type": "git",
-    "url": "https://github.com/pinax/pinax-project"
+    "url": "git+https://github.com/pinax/pinax-project.git"
   },
   "scripts": {
     "clean": "rm -rf static/dist && mkdir -p static/dist/js && mkdir -p static/dist/css && mkdir -p static/dist/images",
@@ -49,5 +49,14 @@
     "onchange": "3.2.1",
     "uglify-js": "3.1.10",
     "watchify": "3.9.0"
-  }
+  },
+  "name": "letshang",
+  "description": "## Getting Started",
+  "bugs": {
+    "url": "https://github.com/pinax/pinax-project/issues"
+  },
+  "homepage": "https://github.com/pinax/pinax-project#readme",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Albert Zarate"
 }

@@ -1,57 +1,220 @@
-# -*- coding: utf-8 -*-
-'''
-from __future__ import unicode_literals
-from django.http import HttpResponse
-from django.shortcuts import render
-from letshang.models import UserProfile
-from django.http import Http404
-from letshang import apps
-from django.contrib.auth.models import User
-from django.apps import AppConfig
-from django.conf import settings
+<html lang="en">
 
-# Create your views here.
-def index(request):
-    return render(request, 'selection/index.html', {})
+  <head>
 
-def choice(request, selection_id):
-    profiles=UserProfile.objects.all()
-    for profile in profiles:
-        choice=""
-        location=""
-        name=profile.user.username
-        #other_user=User.objects.exclude(id=request.user.id).filter(userprofile__nost_recent_choice=1).order_by('is_active')[0]
-        if str(selection_id)=='1':
-            choice="eat!"
-            choice_id=1
-            profile.most_recent_choice=1
-            profile.activity_count=profile.activity_count+1
-            profile.save()
-            other_user=UserProfile.objects.exclude(user_id=profile.user_id).filter(most_recent_choice=1).get()
-        elif str(selection_id)=='2':
-            choice="study!"
-            choice_id=2
-            profile.most_recent_choice=2
-            profile.activity_count=profile.activity_count+1
-            profile.save()
-            other_user=UserProfile.objects.exclude(user_id=profile.user_id).filter(most_recent_choice=2).get()
-        elif str(selection_id)=='3':
-            choice="workout!"
-            choice_id=3
-            profile.most_recent_choice=3
-            profile.activity_count=profile.activity_count+1
-            profile.save()
-            other_user=UserProfile.objects.exclude(user_id=profile.user_id).filter(most_recent_choice=3).get()
-        else:
-            raise Http404("Selection does not exist")
-        if other_user:
-            if str(selection_id)=='1':
-                location="at the microwave next to the restrooms in the SJSU Student Union"
-            elif str(selection_id)=='2':
-                location="in front of the MLK Library"
-            elif str(selection_id)=='3':
-                location="in front of the SJSU Sport Club near the Event Center"
-            return render(request, 'selection/match.html', {'choice':choice, 'choice_id':choice_id , 'name':name, 'other_user':other_user,"location":location})
-        else:
-            return render(request, 'selection/choice.html', {'choice':choice, 'choice_id':choice_id , 'name':name})
-'''
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Welcome to LetsHang!</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../../../node_modules/startbootstrap-stylish-portfolio/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../../../../node_modules/startbootstrap-stylish-portfolio/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Custom CSS -->
+    <link href="../../../../node_modules/startbootstrap-stylish-portfolio/css/stylish-portfolio.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle">
+          <i class="fa fa-times"></i>
+        </a>
+        <li class="sidebar-brand">
+          <a class="js-scroll-trigger" href="#top">LetsHang</a>
+        </li>
+        <li>
+          <a class="js-scroll-trigger" href="#top">Home</a>
+        </li>
+        <li>
+          <a class="js-scroll-trigger" href="#about">About</a>
+        </li>
+        <li>
+          <a class="js-scroll-trigger" href="#services">Features</a>
+        </li>
+        <li>
+          <a class="js-scroll-trigger" href="#contact" onclick=$( "#menu-close").click();>Contact</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Header -->
+    <header class="header" id="top">
+      <div class="text-vertical-center">
+        <h1>LetsHang</h1>
+        <h3>Never Feel Lonely Again</h3>
+        <br>
+        <a href="#about" class="btn btn-dark btn-lg js-scroll-trigger">Let's Hang Out!</a>
+      </div>
+    </header>
+
+    <!-- About -->
+    <section id="about" class="about">
+      <div class="container text-center">
+        <h2>LetsHang makes meeting new people and developing lasting friendships faster and easier!</h2>
+      </div>
+      <!-- /.container -->
+    </section>
+
+    <!-- Features -->
+    <section id="services" class="services bg-primary text-white">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-lg-10 mx-auto">
+            <h2>Features</h2>
+            <hr class="small">
+            <div class="row">
+              <div class="col-md-3 col-sm-6">
+                <div class="service-item">
+                  <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-cloud fa-stack-1x text-primary"></i>
+                  </span>
+                  <h4>
+                    <strong>No Planning</strong>
+                  </h4>
+                  <p>There's no need to plan what to do. All you have to do is choose from three activities; eating, studying, or working out!</p>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <div class="service-item">
+                  <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-compass fa-stack-1x text-primary"></i>
+                  </span>
+                  <h4>
+                    <strong>Meeting Up? Taken Care Of.</strong>
+                  </h4>
+                  <p>There's no need to plan where to meet either! LetsHang will choose a location for both users to meet up. Locations will vary depending on what activity is chosen.</p>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <div class="service-item">
+                  <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-flask fa-stack-1x text-primary"></i>
+                  </span>
+                  <h4>
+                    <strong>Fast. Secure.</strong>
+                  </h4>
+                  <p>Using the Django Framework, our services are both fast and secure. No need to worry about stolen information.</p>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <div class="service-item">
+                  <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-shield fa-stack-1x text-primary"></i>
+                  </span>
+                  <h4>
+                    <strong>SJSU Exclusive!</strong>
+                  </h4>
+                  <p>Only SJSU students can take advantage of LetsHang. Limiting it to the SJSU Campus allows us to minimize the chances of incidents occuring, shorten the time it takes to meet up, and guarantees users have at least one thing in common.</p>
+                </div>
+              </div>
+            </div>
+            <!-- /.row (nested) -->
+          </div>
+          <!-- /.col-lg-10 -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container -->
+    </section>
+    <!-- Callout -->
+    <aside class="callout">
+      <div class="text-vertical-center">
+        <h1>Never feel nervous about meeting new people again.</h1>
+      </div>
+    </aside>
+
+    <!-- Call to Action -->
+    <aside class="call-to-action bg-primary text-white">
+      <div class="container text-center">
+        <h3>Check out LetsHang on GitHub!</h3>
+        <a href="#" class="btn btn-lg btn-light">Click Me!</a>
+        <a href="#" class="btn btn-lg btn-dark">Look at Me!</a>
+      </div>
+    </aside>
+
+    <!-- Map
+    <section id="contact" class="map">
+      <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
+      <br/>
+      <small>
+        <a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a>
+      </small>
+    </section>
+-->
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-10 mx-auto text-center">
+            <h4>
+              <strong>LetsHang</strong>
+            </h4>
+            <p>1 Washington Square
+              <br>San Jose, CA 95192</p>
+            <ul class="list-unstyled">
+              <li>
+                <i class="fa fa-phone fa-fw"></i>
+                (123) 456-7890</li>
+              <li>
+                <i class="fa fa-envelope-o fa-fw"></i>
+                <a href="mailto:name@example.com">name@example.com</a>
+              </li>
+            </ul>
+            <br>
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-facebook fa-fw fa-3x"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-twitter fa-fw fa-3x"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-dribbble fa-fw fa-3x"></i>
+                </a>
+              </li>
+            </ul>
+            <hr class="small">
+            <p class="text-muted">Copyright &copy; LetsHang 2017</p>
+          </div>
+        </div>
+      </div>
+      <a id="to-top" href="#top" class="btn btn-dark btn-lg js-scroll-trigger">
+        <i class="fa fa-chevron-up fa-fw fa-1x"></i>
+      </a>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="../../../../node_modules/startbootstrap-stylish-portfolio/vendor/jquery/jquery.min.js"></script>
+    <script src="../../../../node_modules/startbootstrap-stylish-portfolio/vendor/popper/popper.min.js"></script>
+    <script src="../../../../node_modules/startbootstrap-stylish-portfolio/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="../../../../node_modules/startbootstrap-stylish-portfolio/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="../../../../node_modules/startbootstrap-stylish-portfolio/js/stylish-portfolio.js"></script>
+
+  </body>
+
+</html>

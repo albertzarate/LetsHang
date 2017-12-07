@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from django.apps import AppConfig
 from django.contrib import messages
 from django.conf import settings
+#from notifications.signals import notify
 
 # Create your views here.
 def index(request):
@@ -19,33 +20,34 @@ def choice(request, selection_id):
     location=""
     this_user=request.user.userprofile
     if str(selection_id)=='1':
-        choice="eat!"
+        choice="eat"
         choice_id=1
         this_user.most_recent_choice=1
         this_user.activity_count=this_user.activity_count+1
         this_user.save()
         try:
-            other_user=UserProfile.objects.exclude(user=this_user.user).filter(most_recent_choice=1).get()
+            other_user=UserProfile.objects.exclude(user=this_user.user).filter(most_recent_choice=1).order_by('activity_count')[0]
+            #notify.send(UserProfile, recipient=this_user, verb='you matched!')
         except:
             return render(request, 'selection/choice.html', {'choice':choice, 'choice_id':choice_id})
     elif str(selection_id)=='2':
-        choice="study!"
+        choice="study"
         choice_id=2
         this_user.most_recent_choice=2
         this_user.activity_count=this_user.activity_count+1
         this_user.save()
         try:
-            other_user=UserProfile.objects.exclude(user=this_user.user).filter(most_recent_choice=2).get()
+            other_user=UserProfile.objects.exclude(user=this_user.user).filter(most_recent_choice=2).order_by('activity_count')[0]
         except:
             return render(request, 'selection/choice.html', {'choice':choice, 'choice_id':choice_id})
     elif str(selection_id)=='3':
-        choice="workout!"
+        choice="workout"
         choice_id=3
         this_user.most_recent_choice=3
         this_user.activity_count=this_user.activity_count+1
         this_user.save()
         try:
-            other_user=UserProfile.objects.exclude(user=this_user.user).filter(most_recent_choice=3).get()
+            other_user=UserProfile.objects.exclude(user=this_user.user).filter(most_recent_choice=3).order_by('activity_count')[0]
         except:
             return render(request, 'selection/choice.html', {'choice':choice, 'choice_id':choice_id})
     else:

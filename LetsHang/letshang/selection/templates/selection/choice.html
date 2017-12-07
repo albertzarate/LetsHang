@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+{% extends "site_base.html" %}
+{% load i18n %}
+
+{% block head_title %}LetsHang{% endblock %}
+
+{% block body_class %}home{% endblock %}
+
+{% block body_base %}
   <html lang="en">
   <head>
     <title>Selection</title>
@@ -11,7 +18,7 @@
   <body>
   <section class="jumbotron">
   <div class="container">
-    <h1 class="center-align" >You chose to {{choice}}<br><br>There is no one to match with. Please try again!</h1>
+    <h1 class="center-align" >Sorry!<br><br>There is no one to {{choice}} with at the moment. Please try again later!</h1>
     <!--<h2><br>Refresh the page every few seconds.</h2>-->
     <a href="/" class="btn btn-info" role="button">Go back home</a>
 
@@ -19,3 +26,4 @@
   </section>
   </body>
   </html>
+{% endblock %}

@@ -2,7 +2,7 @@ import heapq
 from django.contrib import admin
 from . models import UserProfile
 
-def heapsort(all_users_iterable): #overloaded so it looks at users activity_count
+def heapsort(all_users_iterable): 
     h = []
     for user in all_users_iterable:
         heappush(h, user)

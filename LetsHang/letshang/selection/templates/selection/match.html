@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+{% extends "site_base.html" %}
+{% load i18n %}
+
+{% block head_title %}LetsHang{% endblock %}
+
+{% block body_class %}home{% endblock %}
+
+{% block body_base %}
   <html lang="en">
   <head>
     <title>Selection</title>
@@ -20,3 +27,4 @@
   </section>
   </body>
   </html>
+{% endblock %}

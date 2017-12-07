@@ -132,6 +132,7 @@ INSTALLED_APPS = [
     "bootstrapform",
     "pinax.templates",
     "pinax.notifications",
+    #"notifications",
     # external
     "account",
     "pinax.eventlog",
